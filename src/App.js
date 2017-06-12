@@ -3,31 +3,13 @@ import 'bulma/css/bulma.css';
 import 'weather-icons/css/weather-icons.css';
 import './App.css';
 
+import { Header } from './components/Header/Header';
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav className="nav">
-          <div className="nav-left">
-            <a className="nav-item" href="/">
-              Weather App
-            </a>
-          </div>
-
-          <div className="nav-center">
-            <a className="nav-item" href="https://github.com/nicolaivasquez/weather-app">
-              <span className="icon">
-                <i className="fa fa-github"></i>
-              </span>
-            </a>
-          </div>
-
-          <span className="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </nav>
+        <Header />
         <div className="container is-fluid">
           <div className="tile is-ancestor">
             <div className="tile is-vertical is-8">
@@ -83,22 +65,22 @@ class App extends Component {
                         <div className="column is-half">
                         </div>
                       </div>
-                      <p className="columns">
+                      <div className="columns">
                         <div className="column is-2">Humidity</div>
                         <div className="column">1</div>
-                      </p>
-                      <p className="columns">
+                      </div>
+                      <div className="columns">
                         <div className="column is-2">Humidity</div>
                         <div className="column">1</div>
-                      </p>
-                      <p className="columns">
+                      </div>
+                      <div className="columns">
                         <div className="column is-2">Humidity</div>
                         <div className="column">1</div>
-                      </p>
-                      <p className="columns">
+                      </div>
+                      <div className="columns">
                         <div className="column is-2">Humidity</div>
                         <div className="column">1</div>
-                      </p>
+                      </div>
                     </article>
                   </article>
                 </div>

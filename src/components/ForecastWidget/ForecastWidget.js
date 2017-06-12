@@ -31,6 +31,18 @@ const forecasts = [
 ];
 
 export class ForecastWidget extends Component {
+  forecasts = () => {
+    return this.props.forecasts.list ?
+      this.props.forecasts.list
+        .slice(0, 5)
+        .map((forecast) => ({
+          icon: forecast.weather[0].icon,
+          high: forecast.temp.max,
+          low: forecast.temp.min,
+        }))
+      : [];
+  }
+
   render() {
     return (
       <article className="tile is-child">
@@ -38,8 +50,11 @@ export class ForecastWidget extends Component {
           <p className="title">5-day Forecast</p>
           <div className="content">
             {
-              forecasts.map((forecast, index) =>
-                <ForecastRow key={index} />
+              this.forecasts().map((forecast, index) =>
+                <ForecastRow
+                  key={index}
+                  {...forecast}
+                />
               )
             }
           </div>

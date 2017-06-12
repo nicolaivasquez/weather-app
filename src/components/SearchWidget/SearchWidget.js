@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import 'react-virtualized/styles.css'
 import 'react-virtualized-select/styles.css'
@@ -14,10 +13,6 @@ export class SearchWidget extends Component {
 
     this.state = {
       cities: [],
-      city: {
-        value: 2643743,
-        label: 'London, GB',
-      }
     }
   }
 
@@ -42,8 +37,8 @@ export class SearchWidget extends Component {
             async
             loadOptions={this.loadCities}
             options={this.state.cities}
-            onChange={(city) => this.setState({city})}
-            value={this.state.city}
+            onChange={(city) => this.props.handleChange(city)}
+            value={this.props.city}
           />
         </div>
         <div className="field has-addons">

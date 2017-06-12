@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header } from './Header';
+import { Content } from './Content';
 
 let wrapper;
 
 beforeEach(() => {
   wrapper = shallow(
-    <Header />
+    <Content />
   );
 });
 
 describe('render', () => {
-  it('should contain nav element', () => {
-    expect(wrapper.is('nav')).toBeTruthy();
+  it('should contain container element', () => {
+    expect(wrapper.is('.container')).toBeTruthy();
   });
 });

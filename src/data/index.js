@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { todayStub, forecastStub} from './sample';
 
 const host = 'http://localhost:9500';
 
@@ -11,18 +10,25 @@ export const getCities = (input) => {
   });
 }
 
+const apiKey = '707992c9c3cc293a34c5e547aa24a9ba';
+const apiHost = '//api.openweathermap.org/data/2.5/';
+
 export const getTodayWeather = (cityId) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(todayStub);
-    }, 2000)
-  });
+  return axios.get(`${apiHost}weather`, {
+    params: {
+      id: cityId,
+      appid: apiKey,
+    }
+  })
+    .then((response) => response.data);
 }
 
 export const getForecastWeather = (cityId) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(forecastStub);
-    }, 2000)
-  });
+  return axios.get(`${apiHost}forecast/daily`, {
+    params: {
+      id: cityId,
+      appid: apiKey,
+    }
+  })
+    .then((response) => response.data);
 }

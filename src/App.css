@@ -1,7 +1,7 @@
-.wi {
-  -webkit-transform: scale(3);
-  -moz-transform: scale(3);
-  -ms-transform: scale(3);
-  -o-transform: scale(3);
-  transform: scale(3);
+.weather-icon {
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
 }

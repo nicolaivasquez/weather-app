@@ -21,7 +21,7 @@ export class TodayWidget extends Component {
       <article className="tile is-child notification is-primary">
         <article className="media">
           <figure className="media-left">
-            <img src={this.icon()} />
+            <img className="weather-icon" src={this.icon()} />
           </figure>
           <div className="media-content">
             <nav className="level">

@@ -10,10 +10,7 @@ export class ForecastRow extends Component {
     return (
       <article className="media">
         <figure className="media-left">
-          <span className="icon is-large">
-            <i className="wi wi-day-lightning"></i>
-          </span>
-          <img src={getIcon(this.props.icon)} />
+          <img className="weather-icon" src={getIcon(this.props.icon)} />
         </figure>
         <div className="media-content">
           <nav className="level">

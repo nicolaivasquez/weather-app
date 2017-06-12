@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 describe('render', () => {
-  it('should contain input element', () => {
-    expect(wrapper.find('input').exists()).toBeTruthy();
+  it('should contain select element', () => {
+    expect(wrapper.find('VirtualizedSelect').exists()).toBeTruthy();
   });
 });

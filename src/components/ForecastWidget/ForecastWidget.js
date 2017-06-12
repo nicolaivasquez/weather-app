@@ -38,8 +38,8 @@ export class ForecastWidget extends Component {
           <p className="title">5-day Forecast</p>
           <div className="content">
             {
-              forecasts.map((forecast) =>
-                <ForecastRow />
+              forecasts.map((forecast, index) =>
+                <ForecastRow key={index} />
               )
             }
           </div>

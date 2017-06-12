@@ -4,6 +4,7 @@ import {
   getIcon,
   getTemperature,
 } from '../../lib/weather';
+import { isLoading } from '../isLoading/isLoading';
 
 export class TodayWidget extends Component {
   icon = () => {
@@ -18,13 +19,18 @@ export class TodayWidget extends Component {
 
   render() {
     return (
-      <article className="tile is-child notification is-primary">
+      <article className="tile is-child notification is-primary is-loading">
         <article className="media">
           <figure className="media-left">
             <img className="weather-icon" src={this.icon()} />
           </figure>
           <div className="media-content">
             <nav className="level">
+              <div className="level-item has-text-centered">
+                <div>
+                  <p className="title">{this.props.weather.name}</p>
+                </div>
+              </div>
               <div className="level-item has-text-centered">
                 <div>
                   <p className="title">{this.temperature()}&deg;</p>
@@ -80,3 +86,5 @@ export class TodayWidget extends Component {
     );
   }
 }
+
+export const TodayWidgetWithLoading = isLoading(TodayWidget);

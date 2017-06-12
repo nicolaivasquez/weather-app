@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 
 import { SearchWidget } from '../SearchWidget/SearchWidget';
-import { TodayWidget } from '../TodayWidget/TodayWidget';
+import { TodayWidgetWithLoading } from '../TodayWidget/TodayWidget';
 import { GraphWidget } from '../GraphWidget/GraphWidget';
-import { ForecastWidget } from '../ForecastWidget/ForecastWidget';
+import { ForecastWidgetWithLoading } from '../ForecastWidget/ForecastWidget';
 
 import { getForecastWeather, getTodayWeather } from '../../data';
+
+const defaultLoading = {
+  loading: {
+    today: true,
+    forecasts: true,
+  },
+}
 
 export class Content extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      ...defaultLoading,
       city: {
         value: 2643743,
         label: 'London, GB',
@@ -27,14 +35,32 @@ export class Content extends Component {
 
   setWeather = (city) => {
     getForecastWeather(city.value)
-      .then((forecasts) => this.setState({forecasts}));
+      .then((forecasts) => {
+        this.setState({
+          forecasts,
+          loading: {
+            forecasts: false,
+          },
+        });
+      });
 
     getTodayWeather(city.value)
-      .then((today) => this.setState({today}));
+      .then((today) => {
+        this.setState({
+          today,
+          loading: {
+            forecasts: false,
+          },
+        })
+      });
   }
 
   handleCityChange = (city) => {
     this.setState({city});
+
+    this.setState({
+      ...defaultLoading,
+    });
 
     this.setWeather(city);
   };
@@ -52,8 +78,9 @@ export class Content extends Component {
                 />
               </div>
               <div className="tile is-parent">
-                <TodayWidget
+                <TodayWidgetWithLoading
                   weather={this.state.today}
+                  loading={this.state.loading.today}
                 />
               </div>
             </div>
@@ -62,8 +89,9 @@ export class Content extends Component {
             </div>
           </div>
           <div className="tile is-parent">
-            <ForecastWidget
+            <ForecastWidgetWithLoading
               forecasts={this.state.forecasts}
+              loading={this.state.loading.forecasts}
             />
           </div>
         </div>

@@ -1,37 +1,11 @@
 import React, { Component } from 'react';
 
 import { ForecastRow } from '../ForecastRow/ForecastRow';
-
-const forecasts = [
-  {
-    key: 'cloudy',
-    high: '23',
-    low: '13',
-  },
-  {
-    key: 'cloudy',
-    high: '23',
-    low: '13',
-  },
-  {
-    key: 'cloudy',
-    high: '23',
-    low: '13',
-  },
-  {
-    key: 'cloudy',
-    high: '23',
-    low: '13',
-  },
-  {
-    key: 'cloudy',
-    high: '23',
-    low: '13',
-  }
-];
+import { isLoading } from '../isLoading/isLoading';
 
 export class ForecastWidget extends Component {
   forecasts = () => {
+    console.log(this.props);
     return this.props.forecasts.list ?
       this.props.forecasts.list
         .slice(0, 5)
@@ -63,3 +37,5 @@ export class ForecastWidget extends Component {
     );
   }
 }
+
+export const ForecastWidgetWithLoading = isLoading(ForecastWidget);

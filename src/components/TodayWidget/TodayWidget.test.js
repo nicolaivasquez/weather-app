@@ -3,10 +3,15 @@ import { shallow } from 'enzyme';
 import { TodayWidget } from './TodayWidget';
 
 let wrapper;
+const testWeather = {
+  weather: [{}]
+}
 
 beforeEach(() => {
   wrapper = shallow(
-    <TodayWidget />
+    <TodayWidget
+      weather={testWeather}
+    />
   );
 });
 
